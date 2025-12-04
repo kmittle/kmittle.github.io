@@ -6,9 +6,9 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "Yi Ren (任意)"
-description              : "Focusing on video and speech large generation model."
-repository               : "rayeren/rayeren.github.io"
+title                    : "Boyuan Cao (曹柏源)"
+description              : "Focusing on robotics and visual generation model."
+repository               : "kmittle/kmittle.github.io"
 google_scholar_stats_use_cdn : true
 
 # google analytics
@@ -21,14 +21,14 @@ baidu_site_verification  : code-ZxFK3f4pfb
 
 # Site Author
 author:
-  name             : "Yi Ren (任意)"
-  avatar           : "images/ry_profile.jpeg"
+  name             : "Boyuan Cao (曹柏源)"
+  avatar           : "images/cby_profile.png"
   bio              : ""
-  location         : "Singapore"
+  location         : "China"
   employer         :
   pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?user=4FA6C0AAAAAJ"
-  email            : "rayeren613@gmail.com"
+  googlescholar    : "https://scholar.google.com/citations?user=VBTZ-GMAAAAJ&hl=zh-CN"
+  email            : "boyuancao@126.com"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -37,15 +37,15 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "RayeRen"
+  github           : "kmittle"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "rayeren"
-  dblp             : "https://dblp.org/pid/75/6568-6.html"
-  orcid            : "https://orcid.org/0000-0002-9160-3848"
+  linkedin         : #"rayeren"
+  dblp             : "https://dblp.org/pid/317/1016.html"
+  orcid            : "https://orcid.org/0009-0009-3137-5079"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
