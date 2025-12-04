@@ -1,4 +1,3 @@
-
 # 📝 Publications 
 <!-- ## 🎙 Speech Synthesis
 
