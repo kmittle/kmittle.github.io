@@ -39,28 +39,50 @@
     </p>
   </font>
   <br>
+  <span style="font-size: 20px; text-align: center; font-weight: bold;">
+    🔥🔥🔥 RepLDM is a training-free method for higher-resolution image generation,
+    enabling the <span style="color: coral;"><u>8k</u></span> image generation!
+  </span>
+  <br>
   <img width="960" src="./figs/teaser.png">
 </div>
 
-<br>
 
 <!-- briefly introduce RepLDM -->
 <div class="content">
-  <span style="font-size: 20px; text-align: center; font-weight: bold;">
-      🔥🔥🔥 RepLDM is a training-free method for higher-resolution image generation,
-      enabling the <span style="color: coral;"><u>8k</u></span> image generation!
-  </span>
-  <br>
-
-  RepLDM consists of two stages:<br>
-  (<b>i</b>) an <span style="font-weight: bold; color: tomato;"><u>Attention Guidance</u></span> stage,
-  which enriches color vibrancy and fine-grained details to enhance visual fidelity;<br>
-  (<b>ii</b>) a <u style="color: tomato;">progressive upsampling</u> stage,
-  which performs upsampling in pixel-space to upscale images while refining textures in latent space to suppress artifacts.<br>
-  Both components are training-free and can be seamlessly integrated with a wide range of latent diffusion models.
+  <h2 style="text-align:center;"><b>Abstract</b></h2>
+  <p>While latent diffusion models (LDMs), such as Stable Diffusion, are designed for high-resolution image generation,
+    they often struggle with significant structural distortions when generating images at resolutions higher than their training one.
+    Instead of relying on extensive retraining, a more resource-efficient approach is to reprogram the pretrained model for high-resolution (HR) image generation;
+    however, existing methods often result in poor image quality and long inference time.
+    We introduce RepLDM, a novel reprogramming framework for pretrained LDMs that enables
+    high-quality, high-efficiency, high-resolution image generation; see Fig. 1 (the teaser image).
+    RepLDM consists of two stages:
+    (i) an attention guidance stage, which generates a latent representation of a higher-quality training-resolution image using a novel parameter-free self-attention mechanism
+    to enhance the structural consistency; and
+    (ii) a progressive upsampling stage, which progressively performs upsampling in pixel space to mitigate the severe artifacts caused by latent space upsampling.
+    The effective initialization from the first stage allows for denoising at higher resolutions with significantly fewer steps, improving the efficiency.
+    Extensive experimental results demonstrate that RepLDM significantly outperforms state-of-the-art methods in both quality and efficiency for HR image generation,
+    underscoring its advantages for real-world applications.
+  </p>
 </div>
 
+
+<div class="content">
+  <h2><b>Methodology</b></h2>
+  <p>RepLDM consists of two stages:<br>
+    (<b>i</b>) an <span style="font-weight: bold; color: tomato;"><u>Attention Guidance</u></span> stage,
+    which enriches color vibrancy and fine-grained details to enhance visual fidelity;<br>
+    (<b>ii</b>) a <u style="color: tomato;">progressive upsampling</u> stage,
+    which performs upsampling in pixel-space to upscale images while refining textures in latent space to suppress artifacts.<br>
+    Both components are training-free and can be seamlessly integrated with a wide range of latent diffusion models.
+  </p>
+  <div style="text-align: center;">
+  <img width="960" src="./figs/RepLDM.png">
+  </div>
+</div>
 <br>
+
 
 <!-- Abaltion on the effectiveness of Attention Guidance -->
 <p style="font-size: 28px; text-align: center; font-weight: bold;">
@@ -145,6 +167,7 @@
 <br>
 <br>
 
+
 <!-- Illustration the effefctiveness with ControlNet -->
 <p style="font-size: 28px; text-align: center; font-weight: bold;">
   <span style="color: tomato">Attention Guidance</span> Can be used with other components<br>
@@ -179,6 +202,7 @@
 <br>
 <br>
 
+
 <!-- Flexible adjust on the detail level -->
 <p style="font-size: 28px; text-align: center; font-weight: bold;">
   <span style="color: tomato">Attention Guidance</span> allows users to freely adjust the level of detail and color richness<br>
@@ -198,6 +222,7 @@
 
 <br>
 <br>
+
 
 <!-- Apply in other frameworks -->
 <p style="font-size: 28px; text-align: center; font-weight: bold;">
@@ -260,35 +285,6 @@
   </div>
 </div> -->
 
-
-<div class="content">
-  <h2 style="text-align:center;"><b>Abstract</b></h2>
-  <p>While latent diffusion models (LDMs), such as Stable Diffusion, are designed for high-resolution image generation,
-    they often struggle with significant structural distortions when generating images at resolutions higher than their training one.
-    Instead of relying on extensive retraining, a more resource-efficient approach is to reprogram the pretrained model for high-resolution (HR) image generation;
-    however, existing methods often result in poor image quality and long inference time.
-    We introduce RepLDM, a novel reprogramming framework for pretrained LDMs that enables
-    high-quality, high-efficiency, high-resolution image generation; see Fig. 1 (the teaser image).
-    RepLDM consists of two stages:
-    (i) an attention guidance stage, which generates a latent representation of a higher-quality training-resolution image using a novel parameter-free self-attention mechanism
-    to enhance the structural consistency; and
-    (ii) a progressive upsampling stage, which progressively performs upsampling in pixel space to mitigate the severe artifacts caused by latent space upsampling.
-    The effective initialization from the first stage allows for denoising at higher resolutions with significantly fewer steps, improving the efficiency.
-    Extensive experimental results demonstrate that RepLDM significantly outperforms state-of-the-art methods in both quality and efficiency for HR image generation,
-    underscoring its advantages for real-world applications.
-  </p>
-</div>
-
-
-<div class="content">
-  <h2><b>Methodology</b></h2>
-  <p>
-  </p>
-  <div style="text-align: center;">
-  <img width="960" src="./figs/RepLDM.png">
-  </div>
-</div>
-
 <!-- <div class="content">
   <h2><b>Zoomed in Details</b></h2>
   <p>FreeScale may regenerate the original blurred areas at low resolution based on the prior knowledge that the model has learned. As shown in the bottom row, two originally chaotic and blurry faces are clearly outlined at 8k resolution.</p>
@@ -307,7 +303,7 @@
 
 <div class="content">
   <h2><b>Further Ablation Results on Attention Guidance</b></h2>
-  
+
 </div>
 
 
