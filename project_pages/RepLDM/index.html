@@ -43,55 +43,13 @@
     🔥🔥🔥 <span style="color: blueviolet;">RepLDM</span> is a training-free method for higher-resolution image generation,
     enabling the <span style="color: coral;"><u>8k</u></span> image generation!
   </span>
-  <br>
-  <img width="960" src="./figs/teaser.png">
-</div>
-
-
-<!-- briefly introduce RepLDM -->
-<div class="content">
-  <h2 style="text-align:center;"><b>Abstract</b></h2>
-  <p>While latent diffusion models (LDMs), such as Stable Diffusion, are designed for high-resolution image generation,
-    they often struggle with significant structural distortions when generating images at resolutions higher than their training one.
-    Instead of relying on extensive retraining, a more resource-efficient approach is to reprogram the pretrained model for high-resolution (HR) image generation;
-    however, existing methods often result in poor image quality and long inference time.
-    We introduce RepLDM, a novel reprogramming framework for pretrained LDMs that enables
-    high-quality, high-efficiency, high-resolution image generation; see Fig. 1 (the teaser image).
-    RepLDM consists of two stages:
-    (i) an attention guidance stage, which generates a latent representation of a higher-quality training-resolution image using a novel parameter-free self-attention mechanism
-    to enhance the structural consistency; and
-    (ii) a progressive upsampling stage, which progressively performs upsampling in pixel space to mitigate the severe artifacts caused by latent space upsampling.
-    The effective initialization from the first stage allows for denoising at higher resolutions with significantly fewer steps, improving the efficiency.
-    Extensive experimental results demonstrate that RepLDM significantly outperforms state-of-the-art methods in both quality and efficiency for HR image generation,
-    underscoring its advantages for real-world applications.
+  <p>
+    <b>RepLDM</b> consists of two stages: (<b>i</b>) an <span style="font-weight: bold; color: tomato;"><u>Attention Guidance</u></span> stage, and
+    (<b>ii</b>) a <u style="color: tomato;">progressive upsampling</u> stage.
+    Both of the components are training-free and can be seamlessly integrated with a wide range of latent diffusion models.
   </p>
+  <img width="960" src="./figs/teaser.jpg">
 </div>
-
-
-<div class="content">
-  <h2><b>Methodology</b></h2>
-  <p>RepLDM consists of two stages:<br>
-    (<b>i</b>) an <span style="font-weight: bold; color: tomato;"><u>Attention Guidance</u></span> stage,
-    which enriches color vibrancy and fine-grained details to enhance visual fidelity;<br>
-    (<b>ii</b>) a <u style="color: tomato;">progressive upsampling</u> stage,
-    which performs upsampling in pixel-space to upscale images while refining textures in latent space to suppress artifacts.<br>
-    Both components are training-free and can be seamlessly integrated with a wide range of latent diffusion models.
-  </p>
-  <div style="text-align: center;">
-  <img width="960" src="./figs/RepLDM.png">
-  </div>
-</div>
-
-
-<div class="content">
-  <h2><b>Qualitative Comparison</b></h2>
-  <p>Image qualitative comparisons with other baselines. Our method generates both 2048x2028 and 4096x4096 vivid images with better content coherence and local details.</p>
-  <div style="text-align: center;">
-  <img width="960" src="./figs/model_comparison.jpg">
-  </div>
-</div>
-
-<br>
 
 
 <!-- Abaltion on the effectiveness of Attention Guidance -->
@@ -105,20 +63,20 @@
       <div class="row comp-margin">
         <div class="col-md-4 col-md-offset-0">
             <div class="b-dics img-responsive center-block" style="width:100%;">
-                <img src="./figs/HighRes-LowRes/110_0.png" alt="SDXL (1024x1024)" />
-                <img src="./figs/HighRes-LowRes/110_0-2048-w.png" alt="RepLDM (2048x2048)" />
+                <img src="./figs/HighRes-LowRes/110_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/110_0-2048-w.jpg" alt="RepLDM (2048x2048)" />
             </div>
         </div>
         <div class="col-md-4">
             <div class="b-dics img-responsive center-block" style="width:100%;">
-                <img src="./figs/HighRes-LowRes/104_0.png" alt="SDXL (1024x1024)" />
-                <img src="./figs/HighRes-LowRes/104_0-2048-w.png" alt="RepLDM (2048x2048)" />
+                <img src="./figs/HighRes-LowRes/104_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/104_0-2048-w.jpg" alt="RepLDM (2048x2048)" />
             </div>
         </div>
         <div class="col-md-4">
             <div class="b-dics img-responsive center-block" style="width:100%;">
-                <img src="./figs/HighRes-LowRes/75_0.png" alt="SDXL (1024x1024)" />
-                <img src="./figs/HighRes-LowRes/75_0-2048-w.png" alt="RepLDM (2048x2048)" />
+                <img src="./figs/HighRes-LowRes/75_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/75_0-2048-w.jpg" alt="RepLDM (2048x2048)" />
             </div>
         </div>
     </div>
@@ -130,49 +88,49 @@
       <div class="row comp-margin">
         <div class="col-md-4">
             <div class="b-dics img-responsive center-block" style="width:100%;">
-                <img src="./figs/HighRes-LowRes/232_0.png" alt="SDXL (1024x1024)" />
-                <img src="./figs/HighRes-LowRes/232_0-4096-w.png" alt="FreeScale (4096x4096)" />
+                <img src="./figs/HighRes-LowRes/232_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/232_0-4096-w.jpg" alt="RepLDM (4096x4096)" />
             </div>
         </div>
         <div class="col-md-4 col-md-offset-0">
             <div class="b-dics img-responsive center-block" style="width:100%;">
-                <img src="./figs/HighRes-LowRes/808_0.png" alt="SDXL (1024x1024)" />
-                <img src="./figs/HighRes-LowRes/808_0-4096-w.png" alt="RepLDM (4096x4096)" />
+                <img src="./figs/HighRes-LowRes/808_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/808_0-4096-w.jpg" alt="RepLDM (4096x4096)" />
             </div>
         </div>
         <div class="col-md-4">
             <div class="b-dics img-responsive center-block" style="width:100%;">
-                <img src="./figs/HighRes-LowRes/Elaina.png" alt="SDXL (1024x1024)" />
-                <img src="./figs/HighRes-LowRes/Elaina-4096-w.png" alt="RepLDM (4096x4096)" />
+                <img src="./figs/HighRes-LowRes/Elaina.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/Elaina-4096-w.jpg" alt="RepLDM (4096x4096)" />
             </div>
         </div>
     </div>
 </div>
 
-<!-- <br>
+<br>
 
 <div class="container" id="main">
     <div class="row comp-margin">
         <div class="col-md-4">
             <div class="b-dics img-responsive center-block" style="width:100%;">
-                <img src="./figs/HighRes-LowRes/232_0.png" alt="SDXL (1024x1024)" />
-                <img src="./figs/HighRes-LowRes/232_0-4096-w.png" alt="FreeScale (4096x4096)" />
+                <img src="./figs/HighRes-LowRes/Elaina-1.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/Elaina-1-6144-w.jpg" alt="RepLDM (6144x6144)" />
             </div>
         </div>
         <div class="col-md-4 col-md-offset-0">
             <div class="b-dics img-responsive center-block" style="width:100%;">
-                <img src="./figs/HighRes-LowRes/808_0.png" alt="SDXL (1024x1024)" />
-                <img src="./figs/HighRes-LowRes/808_0-4096-w.png" alt="RepLDM (4096x4096)" />
+                <img src="./figs/HighRes-LowRes/3_87846414.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/3_87846414-w.jpg" alt="RepLDM (6144x6144)" />
             </div>
         </div>
         <div class="col-md-4">
             <div class="b-dics img-responsive center-block" style="width:100%;">
-                <img src="./figs/HighRes-LowRes/Elaina.png" alt="SDXL (1024x1024)" />
-                <img src="./figs/HighRes-LowRes/Elaina-4096-w.png" alt="RepLDM (4096x4096)" />
+                <img src="./figs/HighRes-LowRes/0_8637542.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/0_8637542-w.jpg" alt="RepLDM (6144x6144)" />
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <br>
 <br>
@@ -192,25 +150,25 @@
     <!-- Keqing case -->
     <div class="col-md-3">
       <div class="img-responsive center-block" style="width:100%;">
-          <img src="./figs/ControlNet/Keqing-canny.png" alt="Canny Condition Image" />
+          <img src="./figs/ControlNet/Keqing-canny.jpg" alt="Canny Condition Image" />
       </div>
     </div>
     <div class="col-md-3 col-md-offset-0">
       <div class="b-dics img-responsive center-block" style="width:100%;">
-        <img src="./figs/ControlNet/Keqing-wo.png" alt="w/o AG (2048x2048)" />
-        <img src="./figs/ControlNet/Keqing-w.png" alt="w/ AG (2048x2048)" />
+        <img src="./figs/ControlNet/Keqing-wo.jpg" alt="w/o AG (2048x2048)" />
+        <img src="./figs/ControlNet/Keqing-w.jpg" alt="w/ AG (2048x2048)" />
       </div>
     </div>
     <!-- Herta case -->
     <div class="col-md-3">
       <div class="img-responsive center-block" style="width:100%;">
-        <img src="./figs/ControlNet/Herta-canny.png" alt="Canny Condition Image" />
+        <img src="./figs/ControlNet/Herta-canny.jpg" alt="Canny Condition Image" />
       </div>
     </div>
     <div class="col-md-3 col-md-offset-0">
       <div class="b-dics img-responsive center-block" style="width:100%;">
-        <img src="./figs/ControlNet/Herta-wo.png" alt="w/o AG (4096x4096)" />
-        <img src="./figs/ControlNet/Herta-w.png" alt="w/ AG (4096x4096)" />
+        <img src="./figs/ControlNet/Herta-wo.jpg" alt="w/o AG (4096x4096)" />
+        <img src="./figs/ControlNet/Herta-w.jpg" alt="w/ AG (4096x4096)" />
       </div>
     </div>
   </div>
@@ -220,25 +178,25 @@
     <!-- Acttic -->
     <div class="col-md-3">
       <div class="img-responsive center-block" style="width:100%;">
-        <img src="./figs/ControlNet/Attic-depth.png" alt="Depth Condition Image" />
+        <img src="./figs/ControlNet/Attic-depth.jpg" alt="Depth Condition Image" />
       </div>
     </div>
     <div class="col-md-3 col-md-offset-0">
       <div class="b-dics img-responsive center-block" style="width:100%;">
-        <img src="./figs/ControlNet/Attic-wo.png" alt="w/o AG (2048x2048)" />
-        <img src="./figs/ControlNet/Attic-w.png" alt="w/ AG (2048x2048)" />
+        <img src="./figs/ControlNet/Attic-wo.jpg" alt="w/o AG (2048x2048)" />
+        <img src="./figs/ControlNet/Attic-w.jpg" alt="w/ AG (2048x2048)" />
       </div>
     </div>
     <!-- YourName -->
     <div class="col-md-3">
       <div class="img-responsive center-block" style="width:100%;">
-        <img src="./figs/ControlNet/YourName-depth.png" alt="Depth Condition Image" />
+        <img src="./figs/ControlNet/YourName-depth.jpg" alt="Depth Condition Image" />
       </div>
     </div>
     <div class="col-md-3 col-md-offset-0">
       <div class="b-dics img-responsive center-block" style="width:100%;">
-        <img src="./figs/ControlNet/YourName-wo.png" alt="w/o AG (4096x4096)" />
-        <img src="./figs/ControlNet/YourName-w.png" alt="w/ AG (4096x4096)" />
+        <img src="./figs/ControlNet/YourName-wo.jpg" alt="w/o AG (4096x4096)" />
+        <img src="./figs/ControlNet/YourName-w.jpg" alt="w/ AG (4096x4096)" />
       </div>
     </div>
   </div>
@@ -260,7 +218,7 @@
 <div class="container" id="main">
   <div class="row comp-margin">
     <div class="col-md-12">
-      <img src="./figs/attn_guidance_scale_ablation.png" alt="Attention Guidance Scale" />
+      <img src="./figs/attn_guidance_scale_ablation.jpg" alt="Attention Guidance Scale" />
     </div>
   </div>
 </div>
@@ -360,6 +318,52 @@
   <h2><b>Further Ablation Results on Attention Guidance</b></h2>
 
 </div> -->
+
+
+<!-- briefly introduce RepLDM -->
+<div class="content">
+  <h2 style="text-align:center;"><b>Abstract</b></h2>
+  <p>While latent diffusion models (LDMs), such as Stable Diffusion, are designed for high-resolution image generation,
+    they often struggle with significant structural distortions when generating images at resolutions higher than their training one.
+    Instead of relying on extensive retraining, a more resource-efficient approach is to reprogram the pretrained model for high-resolution (HR) image generation;
+    however, existing methods often result in poor image quality and long inference time.
+    We introduce RepLDM, a novel reprogramming framework for pretrained LDMs that enables
+    high-quality, high-efficiency, high-resolution image generation; see Fig. 1 (the teaser image).
+    RepLDM consists of two stages:
+    (i) an attention guidance stage, which generates a latent representation of a higher-quality training-resolution image using a novel parameter-free self-attention mechanism
+    to enhance the structural consistency; and
+    (ii) a progressive upsampling stage, which progressively performs upsampling in pixel space to mitigate the severe artifacts caused by latent space upsampling.
+    The effective initialization from the first stage allows for denoising at higher resolutions with significantly fewer steps, improving the efficiency.
+    Extensive experimental results demonstrate that RepLDM significantly outperforms state-of-the-art methods in both quality and efficiency for HR image generation,
+    underscoring its advantages for real-world applications.
+  </p>
+</div>
+
+
+<div class="content">
+  <h2><b>Methodology</b></h2>
+  <p>RepLDM consists of two stages:<br>
+    (<b>i</b>) an <span style="font-weight: bold; color: tomato;"><u>Attention Guidance</u></span> stage,
+    which enriches color vibrancy and fine-grained details to enhance visual fidelity;<br>
+    (<b>ii</b>) a <u style="color: tomato;">progressive upsampling</u> stage,
+    which performs upsampling in pixel-space to upscale images while refining textures in latent space to suppress artifacts.<br>
+    Both components are training-free and can be seamlessly integrated with a wide range of latent diffusion models.
+  </p>
+  <div style="text-align: center;">
+    <img width="960" src="./figs/RepLDM.jpg">
+  </div>
+</div>
+
+
+<div class="content">
+  <h2><b>Qualitative Comparison</b></h2>
+  <p>Image qualitative comparisons with other baselines. Our method generates both 2048x2028 and 4096x4096 vivid images with better content coherence and local details.</p>
+  <div style="text-align: center;">
+  <img width="960" src="./figs/model_comparison.jpg">
+  </div>
+</div>
+
+<br>
 
 
 <div class="content">
