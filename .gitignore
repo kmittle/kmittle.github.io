@@ -1,1 +1,7 @@
-cby.png
+_site/
+push.sh
+.DS_Store
+/github_myprofile_updater/README.md
+
+cby.jpg
+convert.py
