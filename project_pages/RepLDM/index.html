@@ -1,0 +1,407 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>RepLDM</title>
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/dics.min.css">
+<link rel="stylesheet" href="./css/bulma.min.css">
+<link rel="stylesheet" href="./css/bulma-carousel.min.css">
+<link rel="stylesheet" href="./css/index.css">
+<link rel="stylesheet" href="./css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./js/bulma-carousel.min.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/dics.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', domReady);
+    function domReady() {
+        for (const e of document.querySelectorAll(".b-dics")) {
+            new Dics({
+                container: e,
+                textPosition: "top"
+            });
+        }
+    }
+</script>
+</head>
+
+<div class="content">
+  <h1><strong><font color="#9900FF">RepLDM</font>: Reprogramming Pretrained Latent Diffusion Models<br>for High-Quality, High-Efficiency, High-Resolution Image Generation</strong></h1>
+  <p style="text-align: center; font-weight: bold; font-size: 1.2em"><b>NeurIPS 2025 <span style="color: blueviolet;">Spotlight★</b></p>
+  <p id="authors"><a href="https://scholar.google.com/citations?user=VBTZ-GMAAAAJ&hl=zh-CN"><b>Boyuan Cao<sup>1</sup></b></a> <a href="https://scholar.google.com/citations?hl=zh-CN&user=2VCTS-sAAAAJ&view_op=list_works&sortby=pubdate"><b>Jiaxin Ye<sup>1</sup></b></a> <a href="https://weilllllls.github.io/"><b>Yujie Wei<sup>1</sup></b></a> <a href="https://www.hmshan.io/"><b>Hongming Shan<sup>*1</sup></b></a></p>
+  <p style="font-size: 16px; text-align: center;"><b><sup>1</sup> Fudan University</b>
+  <br>
+  <span style="font-size: 16px"><b>(<sup>*</sup> Corresponding Author)</b></span>
+  </p>
+  <font size="+2">
+    <p style="text-align: center;">
+      <a href="https://arxiv.org/abs/2410.06055" target="_blank"><b>[Paper]</b></a> &nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://github.com/kmittle/RepLDM" target="_blank"><b>[Code]</b></a>
+    </p>
+  </font>
+  <br>
+  <span style="font-size: 20px; text-align: center; font-weight: bold;">
+    🔥🔥🔥 <span style="color: blueviolet;">RepLDM</span> is a training-free method for higher-resolution image generation,
+    enabling the <span style="color: coral;"><u>8k</u></span> image generation!
+  </span>
+  <p>
+    <b>RepLDM</b> consists of two stages: (<b>i</b>) an <span style="font-weight: bold; color: tomato;"><u>Attention Guidance</u></span> stage, and
+    (<b>ii</b>) a <u style="color: tomato;">progressive upsampling</u> stage.
+    Both of the components are training-free and can be seamlessly integrated with a wide range of latent diffusion models.
+  </p>
+  <img width="960" src="./figs/teaser.jpg">
+</div>
+
+
+<!-- Abaltion on the effectiveness of Attention Guidance -->
+<p style="font-size: 28px; text-align: center; font-weight: bold;">
+  🎨🎨🎨 <span style="color: blueviolet;">RepLDM</span> generates high-resolution images with rich details and vivid colors!
+</p>
+
+<br>
+
+<div class="container" id="main">
+      <div class="row comp-margin">
+        <div class="col-md-4 col-md-offset-0">
+            <div class="b-dics img-responsive center-block" style="width:100%;">
+                <img src="./figs/HighRes-LowRes/110_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/110_0-2048-w.jpg" alt="RepLDM (2048x2048)" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="b-dics img-responsive center-block" style="width:100%;">
+                <img src="./figs/HighRes-LowRes/104_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/104_0-2048-w.jpg" alt="RepLDM (2048x2048)" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="b-dics img-responsive center-block" style="width:100%;">
+                <img src="./figs/HighRes-LowRes/75_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/75_0-2048-w.jpg" alt="RepLDM (2048x2048)" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container" id="main">
+      <div class="row comp-margin">
+        <div class="col-md-4">
+            <div class="b-dics img-responsive center-block" style="width:100%;">
+                <img src="./figs/HighRes-LowRes/232_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/232_0-4096-w.jpg" alt="RepLDM (4096x4096)" />
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-0">
+            <div class="b-dics img-responsive center-block" style="width:100%;">
+                <img src="./figs/HighRes-LowRes/808_0.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/808_0-4096-w.jpg" alt="RepLDM (4096x4096)" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="b-dics img-responsive center-block" style="width:100%;">
+                <img src="./figs/HighRes-LowRes/Elaina.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/Elaina-4096-w.jpg" alt="RepLDM (4096x4096)" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container" id="main">
+    <div class="row comp-margin">
+        <div class="col-md-4">
+            <div class="b-dics img-responsive center-block" style="width:100%;">
+                <img src="./figs/HighRes-LowRes/Elaina-1.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/Elaina-1-6144-w.jpg" alt="RepLDM (6144x6144)" />
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-0">
+            <div class="b-dics img-responsive center-block" style="width:100%;">
+                <img src="./figs/HighRes-LowRes/3_87846414.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/3_87846414-w.jpg" alt="RepLDM (6144x6144)" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="b-dics img-responsive center-block" style="width:100%;">
+                <img src="./figs/HighRes-LowRes/0_8637542.jpg" alt="SDXL (1024x1024)" />
+                <img src="./figs/HighRes-LowRes/0_8637542-w.jpg" alt="RepLDM (6144x6144)" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+
+<!-- Illustration the effefctiveness with ControlNet -->
+<p style="font-size: 28px; text-align: center; font-weight: bold;">
+  <span style="color: tomato">Attention Guidance (AG)</span> Can be used with other components<br>
+  such as ControlNet to yield better visual quality!
+</p>
+
+<br>
+
+<div class="container" id="main">
+  <!-- Canny condition -->
+  <div class="row comp-margin">
+    <!-- Keqing case -->
+    <div class="col-md-3">
+      <div class="img-responsive center-block" style="width:100%;">
+          <img src="./figs/ControlNet/Keqing-canny.jpg" alt="Canny Condition Image" />
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+      <div class="b-dics img-responsive center-block" style="width:100%;">
+        <img src="./figs/ControlNet/Keqing-wo.jpg" alt="w/o AG (2048x2048)" />
+        <img src="./figs/ControlNet/Keqing-w.jpg" alt="w/ AG (2048x2048)" />
+      </div>
+    </div>
+    <!-- Herta case -->
+    <div class="col-md-3">
+      <div class="img-responsive center-block" style="width:100%;">
+        <img src="./figs/ControlNet/Herta-canny.jpg" alt="Canny Condition Image" />
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+      <div class="b-dics img-responsive center-block" style="width:100%;">
+        <img src="./figs/ControlNet/Herta-wo.jpg" alt="w/o AG (4096x4096)" />
+        <img src="./figs/ControlNet/Herta-w.jpg" alt="w/ AG (4096x4096)" />
+      </div>
+    </div>
+  </div>
+  <br>
+  <!-- Depth condition -->
+  <div class="row comp-margin">
+    <!-- Acttic -->
+    <div class="col-md-3">
+      <div class="img-responsive center-block" style="width:100%;">
+        <img src="./figs/ControlNet/Attic-depth.jpg" alt="Depth Condition Image" />
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+      <div class="b-dics img-responsive center-block" style="width:100%;">
+        <img src="./figs/ControlNet/Attic-wo.jpg" alt="w/o AG (2048x2048)" />
+        <img src="./figs/ControlNet/Attic-w.jpg" alt="w/ AG (2048x2048)" />
+      </div>
+    </div>
+    <!-- YourName -->
+    <div class="col-md-3">
+      <div class="img-responsive center-block" style="width:100%;">
+        <img src="./figs/ControlNet/YourName-depth.jpg" alt="Depth Condition Image" />
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+      <div class="b-dics img-responsive center-block" style="width:100%;">
+        <img src="./figs/ControlNet/YourName-wo.jpg" alt="w/o AG (4096x4096)" />
+        <img src="./figs/ControlNet/YourName-w.jpg" alt="w/ AG (4096x4096)" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+
+<!-- Flexible adjust on the detail level -->
+<p style="font-size: 28px; text-align: center; font-weight: bold;">
+  <span style="color: tomato">Attention Guidance</span> allows users to freely adjust the level of detail and color richness<br>
+  in an image according to their preferences,<br>
+  simply by modifying the attention guidance scale.
+</p>
+
+<br>
+
+<div class="container" id="main">
+  <div class="row comp-margin">
+    <div class="col-md-12">
+      <img src="./figs/attn_guidance_scale_ablation.jpg" alt="Attention Guidance Scale" />
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+
+<!-- Apply in other frameworks -->
+<p style="font-size: 28px; text-align: center; font-weight: bold;">
+  <span style="color: tomato">Attention Guidance</span> can also be applied in other generation frameworks<br>
+  such as DemoFusion and HiDiffusion,<br>
+  bringing further improvements in visual fidelity!
+</p>
+
+<br>
+
+<div class="container" id="main">
+  <div class="row comp-margin">
+    <div class="col-md-12">
+      <img src="./figs/ag_for_demofusion.jpg" alt="Attention Guidance Scale" />
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container" id="main">
+  <div class="row comp-margin">
+    <div class="col-md-12">
+      <img src="./figs/ag_for_hidiff.jpg" alt="Attention Guidance Scale" />
+    </div>
+  </div>
+</div>
+
+
+<!-- <div id="carousel" class="carousel carousel-vid" style="overflow: hidden; margin-top: 0px; font-weight: bold; font-size: 1.2em">
+  <div class="vid-txt">
+    <p>Impressionist style, a yellow rubber duck floating on the wave on the sunset.</p>
+    <video autoplay muted loop playsinline controls dth="1024px">
+      <source src="./FreeScale_files/vids/1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vid-txt">
+    <p>Iron Man surfing on the sea.</p>
+    <video autoplay muted loop playsinline controls dth="1024px">
+      <source src="./FreeScale_files/vids/2.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vid-txt">
+    <p>A camel walking in a desert landscape.</p>
+    <video autoplay muted loop playsinline controls dth="1024px">
+      <source src="./FreeScale_files/vids/3.mp4" type="video/mp4">
+    </video>
+  </div>  
+  <div class="vid-txt">
+    <p>Flying through an intense battle between pirate ships in a stormy ocean.</p>
+    <video autoplay muted loop playsinline controls dth="1024px">
+      <source src="./FreeScale_files/vids/4.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vid-txt">
+    <p>A corgi running on the grassland on the grassland.</p>
+    <video autoplay muted loop playsinline controls dth="1024px">
+      <source src="./FreeScale_files/vids/5.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vid-txt">
+    <p>A lion is swimming.</p>
+    <video autoplay muted loop playsinline controls dth="1024px">
+      <source src="./FreeScale_files/vids/6.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vid-txt">
+    <p>Campfire at night in a snowy forest with starry sky in the background.</p>
+    <video autoplay muted loop playsinline controls dth="1024px">
+      <source src="./FreeScale_files/vids/7.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vid-txt">
+    <p>A panda walking and munching bamboo in a bamboo forest.</p>
+    <video autoplay muted loop playsinline controls dth="1024px">
+      <source src="./FreeScale_files/vids/8.mp4" type="video/mp4">
+    </video>
+  </div>
+</div> -->
+
+<!-- <div class="content">
+  <h2><b>Zoomed in Details</b></h2>
+  <p>FreeScale may regenerate the original blurred areas at low resolution based on the prior knowledge that the model has learned. As shown in the bottom row, two originally chaotic and blurry faces are clearly outlined at 8k resolution.</p>
+  <div style="text-align: center;">
+  <img width="960" src="./FreeScale_files/figs/fig_diff8k.png">
+  </div>
+</div> -->
+
+<!-- <div class="content">
+  <h2><b>Further Ablation Results on Attention Guidance</b></h2>
+
+</div> -->
+
+
+<!-- briefly introduce RepLDM -->
+<div class="content">
+  <h2 style="text-align:center;"><b>Abstract</b></h2>
+  <p>While latent diffusion models (LDMs), such as Stable Diffusion, are designed for high-resolution image generation,
+    they often struggle with significant structural distortions when generating images at resolutions higher than their training one.
+    Instead of relying on extensive retraining, a more resource-efficient approach is to reprogram the pretrained model for high-resolution (HR) image generation;
+    however, existing methods often result in poor image quality and long inference time.
+    We introduce RepLDM, a novel reprogramming framework for pretrained LDMs that enables
+    high-quality, high-efficiency, high-resolution image generation; see Fig. 1 (the teaser image).
+    RepLDM consists of two stages:
+    (i) an attention guidance stage, which generates a latent representation of a higher-quality training-resolution image using a novel parameter-free self-attention mechanism
+    to enhance the structural consistency; and
+    (ii) a progressive upsampling stage, which progressively performs upsampling in pixel space to mitigate the severe artifacts caused by latent space upsampling.
+    The effective initialization from the first stage allows for denoising at higher resolutions with significantly fewer steps, improving the efficiency.
+    Extensive experimental results demonstrate that RepLDM significantly outperforms state-of-the-art methods in both quality and efficiency for HR image generation,
+    underscoring its advantages for real-world applications.
+  </p>
+</div>
+
+
+<div class="content">
+  <h2><b>Methodology</b></h2>
+  <p>RepLDM consists of two stages:<br>
+    (<b>i</b>) an <span style="font-weight: bold; color: tomato;"><u>Attention Guidance</u></span> stage,
+    which enriches color vibrancy and fine-grained details to enhance visual fidelity;<br>
+    (<b>ii</b>) a <u style="color: tomato;">progressive upsampling</u> stage,
+    which performs upsampling in pixel-space to upscale images while refining textures in latent space to suppress artifacts.<br>
+    Both components are training-free and can be seamlessly integrated with a wide range of latent diffusion models.
+  </p>
+  <div style="text-align: center;">
+    <img width="960" src="./figs/RepLDM.jpg">
+  </div>
+</div>
+
+
+<div class="content">
+  <h2><b>Qualitative Comparison</b></h2>
+  <p>Image qualitative comparisons with other baselines. Our method generates both 2048x2028 and 4096x4096 vivid images with better content coherence and local details.</p>
+  <div style="text-align: center;">
+  <img width="960" src="./figs/model_comparison.jpg">
+  </div>
+</div>
+
+<br>
+
+
+<div class="content">
+<h2>BibTex</h2>
+<p>
+    If you find this paper useful in your research, please consider citing:
+</p>
+<div class="row">
+<pre>
+@inproceedings{caorepldm,
+  title={RepLDM: Reprogramming Pretrained Latent Diffusion Models for High-Quality, High-Efficiency, High-Resolution Image Generation},
+  author={Cao, Boyuan and Ye, Jiaxin and Wei, Yujie and Shan, Hongming},
+  booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems}
+}
+</pre>
+</div>
+</div>
+
+
+<script type="text/javascript" src="chrome-extension://emikbbbebcdfohonlaifafnoanocnebl/js/minerkill.js"></script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+  div.grammarly-desktop-integration {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  div.grammarly-desktop-integration:before {
+    content: attr(data-content);
+  }
+</style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration>
+</html>

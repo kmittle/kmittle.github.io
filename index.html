@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boyuan Cao - Personal Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --card-bg: #fff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --paper-badge-color: #6c5ce7; /* Purple color */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: #fff;
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-text {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .header-image {
+            width: 240px;  /* 180 */
+            height: 240px;  /* 180 */
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid rgba(255,255,255,0.3);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 120% 0%;  /* 第一个值控制左右：0%最左，50%居中，100%最右 */
+        }
+        
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .name .greeting {
+            font-size: 1.3rem;
+            margin-right: 10px;
+        }
+        
+        .title {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        #static-text {
+            font-weight: 500;
+        }
+        
+        #changing-text {
+            font-weight: 500;
+            font-size: 1.6rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        #changing-text::after {
+            content: '|';
+            position: absolute;
+            right: -8px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .header-info {
+            margin-top: 25px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .info-item i {
+            margin-right: 10px;
+            width: 18px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 18px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Navigation Styles */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+        
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: flex-start;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Common Section Styles */
+        .section {
+            padding: 45px 0;
+        }
+        
+        .section-header {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .section-subtitle {
+            font-size: 1rem;
+            color: #666;
+            max-width: 600px;
+        }
+        
+        /* News Section Styles */
+        .news-section {
+            background-color: #fff;
+        }
+        
+        .news-container {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .news-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .news-date {
+            font-weight: 700;
+            color: #e74c3c;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .news-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .news-highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .news-venue {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .news-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .news-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .news-container::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .news-container::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* Papers Section Styles */
+        .papers-section {
+            background-color: #f5f9fc;
+        }
+        
+        .papers-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .paper-card {
+            display: flex;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .paper-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .paper-image {
+            flex: 0 0 40%;
+            min-height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .paper-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            border-radius: 6px;
+        }
+        
+        /* Journal Tag Styles */
+        .journal-tag {
+            position: absolute;
+            top: 15px;
+            left: 0px;
+            background: linear-gradient(135deg, #4834d4, #686de0);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            letter-spacing: 0.5px;
+        }
+        
+        .paper-content {
+            flex: 1;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .paper-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            line-height: 1.4;
+        }
+        
+        .paper-authors {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .paper-authors span {
+            font-weight: 600;
+        }
+        
+        .paper-venue {
+            font-style: italic;
+            margin-bottom: 12px;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .paper-keywords {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .paper-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: var(--paper-badge-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+        
+        /* Awards Section Styles */
+        .awards-section {
+            background-color: #fff;
+        }
+        
+        .awards-container {
+            max-height: 350px;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .award-item {
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .award-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .award-main {
+            flex: 1;
+        }
+        
+        .award-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        
+        .award-level {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .award-date {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+        
+        .awards-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .awards-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .awards-container::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .awards-container::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* Internships Section Styles */
+        .internships-section {
+            background-color: #f5f9fc;
+        }
+        
+        .internships-container {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .internship-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .internship-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .internship-bullet {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .internship-content {
+            flex: 1;
+        }
+        
+        .internship-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 3px;
+        }
+        
+        .internship-company {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .internship-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .internship-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 25px 0;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-text {
+                padding-right: 0;
+                margin-bottom: 25px;
+            }
+            
+            .header-info {
+                justify-content: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .paper-card {
+                flex-direction: column;
+            }
+            
+            .paper-image {
+                flex: 0 0 120px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-links li {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1 class="name"><span class="greeting">Hi 👋 I'm </span> Boyuan Cao</h1>
+                    <p class="title"><span id="static-text">I'm a</span> <span id="changing-text"></span></p>
+                    <p>
+                        I'm a Ph.D. Candidate in Artificial Intelligence at Fudan University (2023.09-2028.06).<br>
+                        Advised by <a href="https://hmshan.io/" style="color: white; text-decoration: underline;">Prof. Hongming Shan</a>.
+                    </p>
+                    
+                    <div class="header-info">
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>boyuancao@126.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+86 137-8910-4361</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-weixin"></i>
+                            <span>Kmittle</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Shanghai, China</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/kmittle" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=VBTZ-GMAAAAJ&hl=zh-CN&oi=ao" class="social-link" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+                        <!-- <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a> -->
+                        <!-- <a href="#" class="social-link"><i class="fas fa-file-pdf"></i></a> -->
+                    </div>
+                </div>
+                
+                <div class="header-image">
+                    <img src="cby-1.png" alt="Boyuan Cao">
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">Boyuan Cao (曹柏源)</div>
+            <ul class="nav-links">
+                <li><a href="#news">News</a></li>
+                <li><a href="#papers">Publications</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#internships">Internships</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- News Section -->
+    <section id="news" class="section news-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">News</h2>
+                <p class="section-subtitle">Latest updates and announcements</p>
+            </div>
+            <div class="news-container">
+                <div class="news-item">
+                    <div class="news-date">2025.09.19</div>
+                    <div class="news-content">
+                        One <span class="news-highlight">first author</span> paper is accepted by <span class="news-venue">NeurIPS 2025 <b>Spotlight</b></span>! 🎉
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025.05.01</div>
+                    <div class="news-content">
+                        One paper is accepted by <span class="news-venue">ICML 2025</span>! 🎉
+                    </div>
+                </div>
+                <!-- <div class="news-item">
+                    <div class="news-date">2021.12.1</div>
+                    <div class="news-content">
+                        Awarded <span class="news-highlight">National Scholarship</span> (Top 0.2% nationwide)! 🏆
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Publications Section -->
+    <section id="papers" class="section papers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Publications</h2>
+                <p class="section-subtitle">My research contributions and academic work</p>
+            </div>
+            <div class="papers-container">
+                <div class="paper-card">
+                    <div class="paper-image">
+                        <div class="journal-tag">NeurIPS 2025 <span style="color: rgb(228, 239, 168)"><b>Spotlight</b></span></div>
+                        <img src="project_pages/RepLDM/figs/teaser.jpg" alt="Paper Image">
+                    </div>
+                    <div class="paper-content">
+                        <h3 class="paper-title">
+                            <a href="https://github.com/kmittle/RepLDM" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                                RepLDM: Reprogramming Pretrained Latent Diffusion Models for High-Quality, High-Efficiency, High-Resolution Image Generation
+                            </a>
+                        </h3>
+                        <p class="paper-authors"><span>Boyuan Cao</span>, Jiaxin Ye, Yujie Wei, Hongming Shan<sup>*</sup></p>
+                        <p class="paper-venue">NeurIPS 2025 <span style="color: tomato"><b>Spotlight</b></span></p>
+                        <p class="paper-keywords">Keywords: Diffusion Model, High Resolution, Attention Guidance, progressive pixel upsampling, AIGC</p>
+                    </div>
+                </div>
+                
+                <!-- <div class="paper-card">
+                    <div class="paper-image">
+                        <div class="journal-tag">ACM MM 2025</div>
+                        <img src="5.png" alt="Paper Image">
+                    </div>
+                    <div class="paper-content">
+                        <h3 class="paper-title"><a href="ACM_MM_citysculpt.pdf" target="_blank" style="color: var(--primary-color); text-decoration: none;">CitySculpt: 3D City Generation from Satellite Imagery with UV Diffusion</a></h3>
+                        <p class="paper-authors"><span>Xingbo Yao</span>, Xuanmin Wang, Hui Xiong<sup>*</sup></p>
+                        <p class="paper-venue">ACM International Conference on Multimedia (ACM MM) (2025)</p>
+                        <p class="paper-keywords">Keywords: Generative Model, Scene Generation, Diffusion, Generative Multimedia</p>
+                    </div>
+                </div> -->
+                
+                <!-- <div class="paper-card">
+                    <div class="paper-image">
+                        <div class="journal-tag">J. Field Robotics</div>
+                        <img src="1.png" alt="Paper Image">
+                    </div>
+                    <div class="paper-content">
+                        <h3 class="paper-title"><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/rob.22315" target="_blank" style="color: var(--primary-color); text-decoration: none;">Autonomous navigation and adaptive path planning in dynamic greenhouse environments utilizing improved LeGO-LOAM and Open Planner algorithms</a></h3>
+                        <p class="paper-authors"><span>Xingbo YAO</span>,Yuhao BAI, Baohua ZHANG<sup>*</sup>, et al.</p>
+                        <p class="paper-venue">Journal of Field Robotics (2024) (JCR Q1, IF = 8.3)</p>
+                        <p class="paper-keywords">Keywords: Robotics, 3D, SLAM, Path planning, LeGO-LOAM</p>
+                    </div>
+                </div> -->
+                
+                <!-- <div class="paper-card">
+                    <div class="paper-image">
+                        <img src="2.png" alt="Paper Image">
+                    </div>
+                    <div class="paper-content">
+                        <h3 class="paper-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0168169925004089" target="_blank" style="color: var(--primary-color); text-decoration: none;">Adaptive Navigation for Robots in Unstructured Agricultural Environments Using Stable Feature Localization and Multi-Sensor Obstacle Detection</a></h3>
+                        <p class="paper-authors"><span>Xingbo YAO</span>, Baohua ZHANG<sup>*</sup>, et al.</p>
+                        <p class="paper-venue">Computers and Electronics in Agriculture (2025) (JCR Q1, IF = 8.9)</p>
+                        <p class="paper-keywords">Keywords: Robotics, 3D, Localization, Obstacle detection, Multi-sensor fusion</p>
+                    </div>
+                </div> -->
+                
+
+                <!-- <div class="paper-card">
+                    <div class="paper-image">
+                        <img src="4.png" alt="Paper Image">
+                    </div>
+                    <div class="paper-content">
+                        <h3 class="paper-title"><a href="https://www.mdpi.com/2073-4395/13/7/1780" target="_blank" style="color: var(--primary-color); text-decoration: none;">Row detection BASED navigation and guidance for agricultural robots and autonomous vehicles in row-crop fields: Methods and applications</a></h3>
+                        <p class="paper-authors">Jiayou SHI, Yuhao BAI, Zhidiao ZHOU, <span>Xingbo YAO</span>, & Baohua ZHANG<sup>*</sup></p>
+                        <p class="paper-venue">Agronomy (2023) (JCR Q1, IF = 3.4)</p>
+                        <p class="paper-keywords">Keywords: Review, Agricultural robots, Navigation, Computer vision</p>
+                    </div>
+                </div> -->
+                
+                <!-- <div class="paper-card">
+                    <div class="paper-content">
+                        <h3 class="paper-title">Software Copyright: Agricultural Robot Localization, Mapping and Path Planning System for Complex Greenhouse Environments V1.0</h3>
+                        <p class="paper-venue">May 9, 2023. 2024SR0327245</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Awards Section -->
+    <section id="awards" class="section awards-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Awards</h2>
+                <p class="section-subtitle">My achievements and academic honors</p>
+            </div>
+            
+            <div class="awards-container">
+
+                <!-- <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">National Scholarship</h3>
+                        <p class="award-level">National Level • Top 0.2%</p>
+                    </div>
+                    <p class="award-date">2023</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">HKUST-GZ Full Scholarship for Mphil Program</h3>
+                        <p class="award-level">CNY 240,000</p>
+                    </div>
+                    <p class="award-date">2024</p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">First Prize in 25th China Robot and AI Competition</h3>
+                        <p class="award-level">National Level </p>
+                    </div>
+                    <p class="award-date">2022</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">Outstanding Student First Prize</h3>
+                        <p class="award-level">University Level • 3 Consecutive Years</p>
+                    </div>
+                    <p class="award-date">2020-2022</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">National Inspirational Scholarship</h3>
+                        <p class="award-level">National Level • 2 Consecutive Years</p>
+                    </div>
+                    <p class="award-date">2021-2022</p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">Tang Zhongying Moral Education Scholarship</h3>
+                        <p class="award-level">University Level • 4 Consecutive Years</p>
+                    </div>
+                    <p class="award-date">2019-2022</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">First Prize in 2022 China Intelligent Robot Combat and Competition</h3>
+                        <p class="award-level">National Level </p>
+                    </div>
+                    <p class="award-date">2022</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">2023 China University Computer Design Competition</h3>
+                        <p class="award-level">National Level • Second Prize</p>
+                    </div>
+                    <p class="award-date">2023</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">Outstanding Youth League Cadre</h3>
+                        <p class="award-level">University Level • 2 Consecutive Years</p>
+                    </div>
+                    <p class="award-date">2021-2022</p>
+                </div>
+                
+
+
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">International University Intelligent Agricultural Equipment Innovation Competition</h3>
+                        <p class="award-level">International Level • Second Prize</p>
+                    </div>
+                    <p class="award-date">2022</p>
+                </div>
+                
+
+                
+                <div class="award-item">
+                    <div class="award-main">
+                        <h3 class="award-title">14th Blue Bridge Cup Competition Jiangsu Division Java Group A</h3>
+                        <p class="award-level">Provincial Level • Second Prize</p>
+                    </div>
+                    <p class="award-date">2023</p>
+                </div> -->
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- Internships Section -->
+    <!-- <section id="internships" class="section internships-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Internships</h2>
+                <p class="section-subtitle">My internship experience</p>
+            </div>
+            
+            <div class="internships-container">
+                <div class="internship-item">
+                    <span class="internship-bullet">•</span>
+                    <div class="internship-content">
+                        <div class="internship-title">Research & Algorithm Intern</div>
+                        <div class="internship-company">
+                            <a href="https://manycoretech.com/" class="internship-link">ManyCore Technology</a> - Institute of Advanced Technology (May 2025 - Sep 2025)
+                        </div>
+                        <div style="margin-top: 8px; font-size: 0.9rem; line-height: 1.5;">
+                            <div><strong>Supervisor:</strong> <a href="https://zihan-z.github.io/" class="internship-link" target="_blank">Zihan ZHOU</a></div>
+                            <div style="margin-top: 4px;"><strong>Work:</strong> Contributed to the development of a 10B-parameter multimodal CAD model for 3D indoor scenes generation from text, images, and video inputs.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                &copy; This template is forked from <a href="https://github.com/YaoXingbo/YaoXingbo.github.io" target="_blank"><span style="color: white;"><u>URL</u></span></a>.
+                If you find it useful, feel free to give the author a star!
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Typing effect implementation
+        const titles = [
+            "AI Researcher",
+            "Machine Learning Engineer", 
+            "Computer Vision Researcher",
+            "Algorithm Enthusiast"
+        ];
+        
+        let currentIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        const deletingSpeed = 50;
+        const pauseTime = 1500;
+        
+        const changingText = document.getElementById('changing-text');
+        
+        function typeEffect() {
+            const currentTitle = titles[currentIndex];
+            
+            if (isDeleting) {
+                // Delete text
+                changingText.textContent = currentTitle.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = deletingSpeed;
+            } else {
+                // Add text
+                changingText.textContent = currentTitle.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+            
+            // If current word typing is complete
+            if (!isDeleting && charIndex === currentTitle.length) {
+                // Pause, then start deleting
+                isDeleting = true;
+                typingSpeed = pauseTime;
+            } else if (isDeleting && charIndex === 0) {
+                // Deletion complete, move to next word
+                isDeleting = false;
+                currentIndex = (currentIndex + 1) % titles.length;
+            }
+            
+            setTimeout(typeEffect, typingSpeed);
+        }
+        
+        // Start typing effect
+        window.addEventListener('load', typeEffect);
+        
+        // Smooth scrolling effect
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
