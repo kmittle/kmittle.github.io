@@ -3,5 +3,7 @@ push.sh
 .DS_Store
 /github_myprofile_updater/README.md
 
+photo/
+
 cby.jpg
 convert.py
