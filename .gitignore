@@ -8,6 +8,10 @@ photo/
 *.docx
 CV/*.jpg
 CV/*.png
-/CV
 
+.claude
+/CV_previous
+
+CLAUDE.md
 convert.py
+resume_chinese_main__CV_.zip
