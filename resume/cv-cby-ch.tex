@@ -1,0 +1,204 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
+
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
+%\usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
+\usepackage{linespacing_fix} % disable extra space before next section
+\usepackage{cite}
+\usepackage[colorlinks=true,urlcolor=gray,linkcolor=gray,citecolor=gray]{hyperref}
+\usepackage[absolute,overlay]{textpos}
+\geometry{left=0.4in,right=0.4in}  % 此处调整简历文本所占的宽度
+\definecolor{ResumeSectionLightGreen}{RGB}{126,191,141}
+\titleformat{\section}
+  {\Large\scshape\raggedright\color{ResumeSectionLightGreen}}
+  {}{0em}{}
+  [\color{ResumeSectionLightGreen}\titlerule]
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\textblockorigin{0mm}{0mm}
+
+\begin{document}
+\pagenumbering{gobble} % suppress displaying page number
+\begin{textblock*}{2.8cm}(16.0cm,0.4cm)
+  \includegraphics[width=2.8cm]{cby.jpg}
+\end{textblock*}
+
+% \vspace*{.01cm} % 上下调整简历内容的位置
+\newlength{\itemparsep}
+\setlength{\itemparsep}{0.4ex}
+
+\name{曹柏源}
+
+% {E-mail}{mobilephone}{homepage}
+% be careful of _ in emaill address
+\centerline{\sffamily\large{\ \faPhone\ +86 137-8910-4361 \textperiodcentered\ \ \faEnvelope\ boyuancao@126.com}}
+\centerline{\sffamily\large{\ \faGlobe\ https://kmittle.github.io/}}
+\vspace{0.7ex}
+% {E-mail}{mobilephone}
+% keep the last empty braces!
+%\contactInfo{xxx@yuanbin.me}{(+86) 131-221-87xxx}{}
+
+
+% \section{\faGraduationCap\ 教育背景} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{教育背景}
+\datedsubsection{\textbf{复旦大学}}{2023.09 - 2028.06}
+类脑智能科学与技术研究院 \quad 生物医学工程 \textit{博士} \quad GPA：3.5/4.0
+\datedsubsection{\textbf{南京农业大学} }{2018.09 - 2023.06}
+人工智能学院 \quad 自动化 \textit{本科} \quad GPA: 92.3/100 \quad 排名：\textbf{1}/65
+
+最具影响力学子(\textbf{全校仅十人}) \quad 国家奖学金(\textbf{1.8\%}) \quad 优秀毕业生
+
+
+% 一作论文 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{论文 (第一作者)}
+% increase linespacing [parsep=0.5ex]
+\begin{itemize}[parsep=\itemparsep]
+  \item {}[\textbf{CCF-A},\ \underline{\textbf{NeurIPS 2025 Spotlight {\mdseries\faStar}\ TOP 3\%}}] RepLDM: Reprogramming Pretrained Latent Diffusion Models for High-Quality, High-Efficiency, High-Resolution Image Generation
+  (\href{https://arxiv.org/abs/2410.06055}{paper}, \href{https://kmittle.github.io/project_pages/RepLDM}{project})
+  \item {}[\textbf{AI顶会},\ \textbf{ECCV 2026},\ Under Review] Dynamic Differential Linear Attention: Enhancing Linear Diffusion Transformer for High-Quality Image Generation
+  (\href{https://arxiv.org/abs/2601.13683}{paper})
+  \item {}[\textbf{SCI一区TOP},\ IF=8.3] Real-time, highly accurate robotic grasp detection utilizing transfer learning for robots manipulating fragile fruits with widely variable sizes and shapes
+  \item {}[\textbf{SCI一区TOP}, IF=12.4, Minor \& Major Revision] Real-Time, Robust and Highly Accurate Robotic Grasp Detection of Fruits with Variable Sizes and Shapes
+  (\href{https://github.com/kmittle/Grasp-Detection-NBMOD}{project})
+\end{itemize}
+
+
+% 项目经历 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{项目经历}
+\datedsubsection{\textbf{符合人类审美偏好的高分辨率图像生成} | 关键词：\textbf{AIGC} / \textbf{Diffusion} / \textbf{强化学习}}{2024.03 - 至今}
+\begin{itemize}[parsep=\itemparsep]
+  \item 背景: 生成高质量的高分辨率图像具有重要价值，然而主流的扩散模型受限于其训练分辨率而难以实现。
+  \item 技术栈: Pytorch，扩散模型 (DDPM、Flow Matching)，强化学习 (DDPO、GRPO)。
+  \item 个人贡献：
+  (1)设计了一种无参数的注意力机制，基于该机制提出了一种与网络架构和去噪模型无关的采样算法，极大提升了生成图像的色彩、细节等视觉体验
+  (2)证明了隐空间插值上采样导致伪影，提出像素空间上采样+扩散重采样优化图像细节。
+  (3)通过大量实验验证了所提出的采样算法与主流预训练扩散模型兼容（e.g., StableDiffusion 1.5、2.1、XL、3.0，ControlNet, etc）。
+  (4)提出了一个符合人类审美偏好的大规模高分辨率数据集。
+  (5)提出了一种高效的去噪渲染器，显著提升图像视觉体验。
+  (6)提出了一个适用于扩散模型的强化学习训练框架以解决强化学习训练过程中不稳定的问题。
+  \item 成果: 基于上述贡献(1)(2)(3), 以第一作者身份于CCF-A AI顶会\underline{\textbf{NeurIPS 2025发表Spotlight⭐TOP 3\%}}论文，相比于SOTA方法，客观指标\textbf{提升9\%}，用户主观评测指标\textbf{提升1.5-2.5倍}，生成速度\textbf{提升4-5倍}。
+  基于上述贡献(4)(5)(6)撰写论文，待以第一作者身份投稿至AI顶会ECCV。
+\end{itemize}
+
+
+\datedsubsection{\textbf{基于动态差分线性注意力的DiT架构优化} | 关键词：\textbf{AIGC} / \textbf{DiT} / \textbf{Diffusion} / \textbf{MoE}}{2024.12 - 至今}
+\begin{itemize}[parsep=\itemparsep]
+  \item 背景：DiT架构在生成领域取得了瞩目的效果，但是受限于$O(N^2)$的时间/空间复杂度，在生成视频、高分辨率图像时面临挑战。
+  \item 技术栈：Pytorch，扩散模型 (DDPM、Flow Matching)，线性注意力机制，混合专家模型 (MoE)。
+  \item 个人贡献：
+  (1)提出了动态差分注意力机制，通过动态token投影、动态度量核映射、动态token差分分别实现token表征解耦、token相似度度量优化、query-to-key查询校准，提升了线性注意力机制在生成任务上的建模能力。
+  (2)证明了token-wise差分和attention map-wise差分的内在一致性。
+  (3)提出了DyDi-LiT架构，相比SOTA模型，在多项指标上都实现了显著提升。
+  \item 成果：
+  以第一作者身份投稿至\textbf{AI顶会ECCV}，相比DiT架构，将复杂度降至$O(N)$的同时获得了\textbf{14.4\%-22.3\%的性能提升}。
+\end{itemize}
+
+
+\datedsubsection{\textbf{电-气混合式机器人抓手设计及自适应主动抓取控制} | 关键词：\textbf{具身智能} / \textbf{位姿检测}}{2021.03 - 2023.06}
+\begin{itemize}[parsep=\itemparsep]
+  \item	背景：机器人抓取是具身智能的核心问题之一，然而机器人在抓取形状多变、柔嫩易损的物体时面临挑战。
+  \item 技术栈：Pytorch/TensorFlow/Keras，YOLO系列，DETR，UNet，Mask2Former，结构重参数化，RCNN系列，RetinaNet，SSD，Sklearn，OpenCV，PLC控制，STM32开发
+  \item 个人贡献:
+  (1)提出了第一个针对易损物体(果蔬等)的抓取位姿检测的数据集
+  (2)提出了抓取位姿检测的实时、高效检测算法。
+  (3)设计了一种吞咽式采摘机械手及机器人系统。
+  (4)设计触觉传感手套，根据人类真实抓取时序数据，设计物体感知的抓取控制序列预测模型。
+  \item 成果:
+  基于贡献(1)(2)以第一作者身份发表期刊论文一篇(\textbf{SCI一区TOP})，\textbf{获得发明专利一项}(ZL202210144228.2)。参与发表SCI一区TOP论文两篇。
+\end{itemize}
+
+
+% 其他论文 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{其他论文}
+\begin{itemize}[parsep=\itemparsep]
+  \item {}[IMCL 2025] Jiaxin Ye, \underline{\textbf{Boyuan Cao}}, Hongming Shan.
+  Emotional face-to-speech.
+  \item {}[CVPR 2026] Jiaxin Ye, Gaoxiang Cong, Chenhui Wang, Xin-Cheng Wen, Zhaoyang Li, \underline{\textbf{Boyuan Cao}}, Hongming Shan.
+  Hierarchical Codec Diffusion for Video-to-Speech Generation.
+  \item {}[SCI一区TOP] Yuhao Bai, Yunxiang Guo, Qian Zhang, \underline{\textbf{Boyuan Cao}}, Baohua Zhang.
+  End-to-End lightweight Transformer-Based neural network for grasp detection towards fruit robotic handling.
+  \item {}[SCI一区TOP] Congmin Guo, Chenhao Zhu, Yuchen Liu, Renjun Huang, \underline{\textbf{Boyuan Cao}}, Qingzhen Zhu, Ranxin Zhang, Baohua Zhang.
+  Multi-network fusion algorithm with transfer learning for green cucumber segmentation and recognition under complex natural environment
+\end{itemize}
+
+
+% 其他荣誉 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{获奖荣誉}
+\begin{itemize}[parsep=\itemparsep]
+  \item 优秀本科毕业论文校级特等奖、江苏省二等奖 | 三好学生一等奖学金 | 全国三维数字化创新设计大赛总决赛一等奖; 全国大学生数学竞赛二等奖; 等10余项国省级竞赛荣誉
+\end{itemize}
+
+
+% \section{实习经历}
+% \datedsubsection{\textbf{XXXX集团 | XXXXX}, 前端开发工程师}{2011-2017}
+% \begin{itemize}
+%   \item 北京前端团队全面负责 web 应用与基础架构框架研发
+%   \item 独立负责 XX 需求(React),通过HTML5 本地存储及JSBridge实现在XXX发布上线
+%   \item 独立负责 chrome 插件开发,完成 XXX 等页面的开发与交叉营销的接入工作
+% \end{itemize}
+
+% \datedsubsection{\textbf{YYYY科技有限公司 | YYYYYY},数据挖掘与可视化工程师}{2005-2011}
+% \begin{itemize}
+%   \item \textbf{利用海量用户定位数据，对城市空间及人群移动特征进行研究。}第一个课题是基于香农熵和人群出行模式，构建城市网格与用户矩阵分析城市多样性/流动性分布；可视分析平台前端与可视化基于D3/Vue/Express开发，数据分析与存储采用Python/MySQL/MongoDB技术，为了均衡大数据情况下的页面可视化渲染消耗用canvas替代svg。第二个课题是对海量商场定位数据做人群分类与可视化查询，依据该系统撰写的论文被CIKM 2016(DAVA Workshop)录用，并收录于中科院软件所年会成果集
+%   \item 负责数据科学部HQ LAB的可视化原型开发，主导 TalkingMind 平台系统设计与前端开发
+% \end{itemize}
+
+% \datedsubsection{\textbf{北京ZZZZ信息技术有限公司 | ZZZZZZ},Web开发工程师}{2005-2005}
+% \begin{itemize}
+%   \item \textbf{独立负责MUSE部门的可视化组件研发。}与平台研发、设计协作完成 DeepGlint Developer 平台可视化图表组件的集成开发，符合完全定制化渲染、响应式布局与实时更新等特点
+%   \item 利用 D3+Vue+WebGL(Three.js) 尝试实现三维空间的人群移动可视化
+% \end{itemize}
+
+% \begin{onehalfspacing}
+% \end{onehalfspacing}
+
+% \datedsubsection{\textbf{DID-ACTE} 荷兰莱顿}{2015年}
+% \role{本科毕业设计}{LIACS 交换生}
+% 利用结巴分词对中国古文进行分词与词性标注，用已有领域知识训练形成 classifier 并对结果进行调优
+% \begin{onehalfspacing}
+% \begin{itemize}
+%   \item 利用结巴分词对中国古文进行分词与词性标注
+%   \item 利用已有领域知识训练形成 classifier, 并用分词结果进行测试反馈
+%   \item 尝试不同规则，对 classifier 进行调优
+% \end{itemize}
+% \end{onehalfspacing}
+
+% \section{竞赛获奖/项目作品}
+% % increase linespacing [parsep=0.5ex]
+% \begin{itemize}[parsep=0.2ex]
+% %   \item LeetCodeOJ Solutions, \textit{https://github.com/hijiangtao/LeetCodeOJ}
+%   \item 第三届中国软件杯大学生软件设计大赛\textbf{全国一等奖}( \textit{http://www.cnsoftbei.com/} ),2014 年8月
+%   \item 中国机器人大赛创意设计大赛\textbf{全国特等奖}( \textit{http://www.rcccaa.org/} ),2013年8月
+% %   \item 中国机器人大赛暨Robocup公开赛(武术擂台赛)全国一等奖,2013年10月
+%   \item 第11届北京理工大学“世纪杯”竞赛学生课外科技作品竞赛\textbf{特等奖},2013年8月
+%   \item VIS Components for security system, \textit{https://hijiangtao.github.io/ss-vis-component/}
+%   \item 个人博客：\textit{https://hijiangtao.github.io/}，更多作品见 \textit{https://github.com/hijiangtao}
+% %   \item 电视节目"爸爸去哪儿"可视化分析展示, \textit{https://hijiangtao.github.io/variety-show-hot-spot-vis/}
+% \end{itemize}
+
+% \section{\faHeartO\ 项目/作品摘要}
+% \section{项目/作品摘要}
+% \datedline{\textit{An Integrated Version of Security Monitor Vis System}, https://hijiangtao.github.io/ss-vis-component/ }{}
+% \datedline{\textit{Dark-Tech}, https://github.com/hijiangtao/dark-tech/ }{}
+% \datedline{\textit{融合社交网络数据挖掘的电视节目可视化分析系统}, https://hijiangtao.github.io/variety-show-hot-spot-vis/}{}
+% \datedline{\textit{LeetCodeOJ Solutions}, https://github.com/hijiangtao/LeetCodeOJ}{}
+% \datedline{\textit{Info-Vis}, https://github.com/ISCAS-VIS/infovis-ucas}{}
+
+
+% \section{\faInfo\ 社会实践/其他}
+% \section{社区参与/实践其他}
+% % increase linespacing [parsep=0.5ex]
+% \begin{itemize}[parsep=0.2ex]
+%   \item 乐于参与开源社区讨论,\textbf{参与翻译 Vue.js, webpack, WebAssembly, Babel 文档，印记中文成员}
+%   \item 中国科学院大学2016秋季学期可视化与可视分析课程助教，\textit{http://vis.ios.ac.cn/infovis-ucas/}
+%   \item 未来论坛学生会成员、北理社联新闻信息中心主任、北理工软件学院学生会宣传部副部长(2012-2016)
+%   \item 2013-2015 北京市共青团“温暖衣冬”志愿者,第九届园博会志愿者,2014 FLL机器人世锦赛志愿者
+% \end{itemize}
+
+%% Reference
+%\newpage
+%\bibliographystyle{IEEETran}
+%\bibliography{mycite}
+\end{document}

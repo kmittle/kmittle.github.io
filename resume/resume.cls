@@ -71,14 +71,16 @@
   \vspace{1.2ex}
 }
 
-\newcommand{\contactInfo}[4]{
+\NewDocumentCommand{\contactInfo}{m m m g}{
   \centerline{\sffamily\large{\ {#1} \textperiodcentered\ \ {#2}}
     \ifthenelse{\isempty{#3}}%
       { } % if {#3} is empty
       {\textperiodcentered\ \ {#3} } % homepage, no space before \text...
-    \ifthenelse{\isempty{#4}}%
-      { } % if {#3} is empty
-      {\textperiodcentered\ \ {#4} }
+    \IfNoValueTF{#4}
+      { }
+      {\ifthenelse{\isempty{#4}}%
+        { } % if {#4} is empty
+        {\textperiodcentered\ \ {#4} }}
   }
   \vspace{0.7ex}
 }
