@@ -8,5 +8,6 @@ photo/
 *.docx
 CV/*.jpg
 CV/*.png
+/CV
 
 convert.py
